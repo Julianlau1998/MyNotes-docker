@@ -7,7 +7,7 @@
         </div>
         <div>
             <router-link to="/">
-                    <img src="../assets/trash.png" alt="delete icon" class="delete">
+                    <img src="../assets/trash.png" alt="delete icon" class="delete" @click="deleteNote">
             </router-link>
         </div>
         <br><br>
@@ -44,6 +44,14 @@ export default {
             }
             localStorage.setItem('notes', JSON.stringify(this.notes))
             router.push('/')
+        },
+        deleteNote () {
+            for (let i in this.notes) {
+                if (this.notes[i].id === this.id) {
+                    this.notes.splice(i, 1)
+                }
+            }
+            localStorage.setItem('notes', JSON.stringify(this.notes))
         }
     },
     mounted () {

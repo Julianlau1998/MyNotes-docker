@@ -85,10 +85,9 @@ ul li {
     margin-bottom: 1rem;
 }
 #whiteLine{
-    border-top: 3px dashed rgb(134, 134, 134);
-    width: 11.4rem;
+    border-top: 3px solid rgb(134, 134, 134);
     margin-top: -0.5rem;
     margin-bottom: 1rem;
-    margin-left: -1.1rem;
+    margin-left: -1.8rem;
 }
 </style>
