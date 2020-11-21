@@ -1,11 +1,5 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <router-view/>
 </template>
 
 <style>
@@ -14,19 +8,76 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: rgb(201, 201, 201);
 }
+body {
+  background-color: #0f1820;
+  margin-top: 0.5rem;
+}
+    .plusButton {
+        position: fixed;
+        bottom: 1rem;
+        padding-bottom: 3.5rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 4.9rem;
+        height: 4.9rem;
+        font-size: 3.2em;
+        background-color: transparent;
+        border-radius: 100%;
+        border: none;
+        box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                     1px 1px 5px 2px black;
+        color: white;
+    }
+    .line {
+        border-top: 6px dashed rgb(158, 63, 0);
+        border-bottom: none;
+        border-right: transparent;
+        border-left: transparent;
+        color: transparent;
+    }
+    .header {
+      margin: 2rem 0 1rem;
+      font-family: Avenir, Helvetica, Arial, sans-serif;
+      letter-spacing: 5px;
+    }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+    /*** Note / NewNote ***/
+    .arrow {
+        width: 2.5rem;
+        height: 3rem;
+        position: absolute;
+        left: 1rem;
+        top: 0.2rem;
+    }
+    .delete {
+        width: 2.2rem;
+        position: absolute;
+        right: 1rem;
+        top: 0.6rem;
+    }
+    #title {
+        font-size: 1.5rem;
+        background-color: rgb(23, 25, 27);
+        background-color: rgb(54, 61, 68);
+        color: lightgray;
+        border: none;
+    }
+    #note {
+        height: 72vh;
+        font-size: 2rem;
+        background-color: rgb(54, 61, 68);
+        color: lightgray;
+        border: none;
+    }
+    .saveButton {
+        background-color: rgb(4, 82, 17);
+        width: 10rem;
+        height: 3rem;
+        margin-top: 1rem;
+        color: white;
+        font-weight: bolder;
+        font-size: 1.2rem;
+    }
 </style>
