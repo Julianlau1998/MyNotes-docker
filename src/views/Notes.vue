@@ -58,7 +58,6 @@ ul {
     list-style-type: none;
 }
 ul li {
-    float: left;
     display: inline-block;
 }
 .noteDiv {
@@ -90,4 +89,26 @@ ul li {
     margin-bottom: 1rem;
     margin-left: -1.8rem;
 }
+@media (max-width: 390px) { 
+    .noteDiv {
+        width: 7rem;
+        height: 7rem;
+    }
+ }
+@media (max-width: 327px) { 
+    .noteDiv {
+        width: 6rem;
+        height: 6rem;
+    }
+    body {
+        margin: 100rem;
+    }
+ }
+
+@media (min-width: 1000px) { 
+    .noteDiv {
+        width: 11rem;
+        height: 9rem;
+    }
+ }
 </style>
