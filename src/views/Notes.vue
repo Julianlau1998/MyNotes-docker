@@ -87,7 +87,7 @@ ul li {
     border-top: 3px solid rgb(134, 134, 134);
     margin-top: -0.5rem;
     margin-bottom: 1rem;
-    margin-left: -1.8rem;
+    margin-left: -2.5rem;
 }
 @media (max-width: 390px) { 
     .noteDiv {
