@@ -5,6 +5,8 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
+import uuid from '@estudioliver/vue-uuid-v4'
+Vue.use(uuid)
 
 new Vue({
   router,

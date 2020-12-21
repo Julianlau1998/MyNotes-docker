@@ -2,20 +2,20 @@
     <div id="app">
         <h1 class="header">MyNotes</h1>
         <hr class="whiteLine">
-        <h2><span style="color: green">Notes</span>
-        <router-link to="/Lists" style="color: white; margin-left: 0.6rem;">Lists</router-link></h2>
+        <h2><router-link to="/" style="color: white;">Notes</router-link>
+        <span style="color: green; margin-left: 0.6rem;">Lists</span></h2>
         <br>
         <!--<hr class="line">-->
         <ul id="listParent">
-            <li v-for="(note, idx) in storedNotes" v-bind:key="idx">
+            <li v-for="(list, idx) in storedLists" v-bind:key="idx">
                 <hr id="whiteLine">
-                <button class="noteDiv" @click="openNote(note.id)">
-                    <h5><b>{{note.title}}</b></h5>
+                <button class="noteDiv" @click="openList(list.id)">
+                    <h5><b>{{list.title}}</b></h5>
                 </button>
             </li>
         </ul>
 
-        <router-link to="/NewNote"><div class="plusButton">+</div></router-link>
+        <router-link to="/NewList"><div class="plusButton">+</div></router-link>
     </div>
 </template>
 
@@ -23,28 +23,27 @@
 import router from '../router'
 
 export default {
-    name: 'Notes',
+    name: 'Lists',
     data () {
         return {
-            storedNotes: JSON.parse(localStorage.getItem('notes')),
+            storedLists: JSON.parse(localStorage.getItem('lists')),
             titles: [],
-            notes: []
+            lists: []
         }
     },
     methods: {
-        openNote (id) {
+        openList (id) {
             this.$store.state.id = id
-            router.push(`/Note/${id}`)
+            router.push(`/list/${id}`)
         }
     },
     mounted () {
-        if(this.storedNotes === null) {
-            this.storedNotes = []
+        if(this.storedLists === null) {
+            this.storedLists = []
         } else {
-            for (let i=0; i<this.storedNotes.length; i++) {
-            this.titles.push(this.storedNotes[i].title)
-            this.notes.push(this.storedNotes[i].note)
-            console.log(this.titles[i])
+            for (let i=0; i<this.storedLists.length; i++) {
+            this.titles.push(this.storedLists[i].title)
+            this.lists.push(this.storedLists[i].list)
         }
         }
     }

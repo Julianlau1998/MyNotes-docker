@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Notes from '../views/Notes.vue'
 import NewNote from '../views/NewNote.vue'
 import Note from '../views/Note.vue'
+import Lists from '../views/Lists.vue'
+import NewList from '../views/NewList.vue'
 
 Vue.use(VueRouter)
 
@@ -18,9 +20,19 @@ const routes = [
     component: NewNote
   },
   {
-    path: '/Note',
+    path: '/newList',
+    name: 'newList',
+    component: NewList
+  },
+  {
+    path: '/Note/:id',
     name: 'Note',
     component: Note
+  },
+  {
+    path: '/Lists',
+    name: 'List',
+    component: Lists
   }
 ]
 

@@ -63,9 +63,10 @@ body {
         background-color: rgb(54, 61, 68);
         color: lightgray;
         border: none;
+
     }
     #note {
-        height: 72vh;
+        height: 68vh;
         font-size: 2rem;
         background-color: rgb(54, 61, 68);
         color: lightgray;
@@ -75,9 +76,16 @@ body {
         background-color: rgb(4, 82, 17);
         width: 10rem;
         height: 3rem;
-        margin-top: 1rem;
         color: white;
         font-weight: bolder;
         font-size: 1.2rem;
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+    .errorMessage{
+      color: red;
     }
 </style>

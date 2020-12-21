@@ -11,21 +11,38 @@
             </router-link>
         </div>
         <br><br>
-        <form>
+        <ValidationObserver v-slot="{ handleSubmit }">
+        <form @submit.prevent="handleSubmit(onSubmit)">
             <div class="form-group">
-                <input type="test" class="form-control" id="title" placeholder="Title" value="title" v-model="title">        
+                <ValidationProvider name="email" rules="required" v-slot="{ errors }">
+                    <input type="test" class="form-control" id="title" placeholder="Title" value="title" v-model="title" ref="title" autofocus>        
+                <span class="errorMessage">{{ errors[0] }}</span>
+                </ValidationProvider>
             </div>
             <div class="form-group">
                 <textarea type="test" class="form-control" id="note"  placeholder="Note" value="note" v-model="note"> </textarea>        
             </div>
+            <button class="saveButton" type="submit">Save</button>
         </form>
-        <button class="saveButton" @click="save">Save</button>
+        </ValidationObserver>
     </div>
 </template>
 
 <script>
 import router from '../router'
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+import { required } from 'vee-validate/dist/rules';
+
+extend('required', {
+  ...required,
+  message: 'This field is required'
+});
+
 export default {
+    components: {
+        ValidationProvider,
+        ValidationObserver
+    },
     data () {
         return {
             id: this.$store.state.id,
@@ -36,7 +53,7 @@ export default {
         }
     },
     methods: {
-        save () {
+        onSubmit () {
             for (let i = 0; i < this.notes.length; i++) {
                 if (this.notes[i].id === this.id) {
                     this.notes[i].title = this.title
@@ -61,6 +78,7 @@ export default {
                 this.note = this.notes[i].note
             }
         }
+        this.$refs.title.focus();
     }
 }
 </script>
