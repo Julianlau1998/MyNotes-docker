@@ -14,6 +14,7 @@
                     <ul>
                         <li v-for="(item, itemKey) in listElements" :key="itemKey">
                             <input type="text" id="listElement" @focus="newElement">
+                            <button style="display: inline;">Del</button>
                         </li>
                     </ul>
                 </div>        
