@@ -2,23 +2,12 @@
 
 ## Project setup
 ```
-npm install
+install docker desktop
 ```
 
-### Compiles and hot-reloads for development
+### Run App
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+cd frontend
+docker-compose up --build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
