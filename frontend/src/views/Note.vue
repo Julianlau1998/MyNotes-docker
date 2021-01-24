@@ -25,6 +25,7 @@
             <button class="saveButton" type="submit">Save</button>
         </form>
         </ValidationObserver>
+        <button class="shareButton" v-on:click="share">Share</button>
     </div>
 </template>
 
@@ -32,6 +33,8 @@
 import router from '../router'
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required } from 'vee-validate/dist/rules';
+import axios from 'axios'
+import store from '../store'
 
 extend('required', {
   ...required,
@@ -45,8 +48,8 @@ export default {
     },
     data () {
         return {
-            id: this.$store.state.id,
-            notes: JSON.parse(localStorage.getItem('notes')),
+            id: this.$route.params.id,
+            notes: {},
             title: '',
             note: '',
             currentObject: {title: '', note: '', id: ""},
@@ -54,21 +57,31 @@ export default {
     },
     methods: {
         onSubmit () {
-            for (let i = 0; i < this.notes.length; i++) {
-                if (this.notes[i].id === this.id) {
-                    this.notes[i].title = this.title
-                    this.notes[i].note = this.note                }
+            if (this.notes !== null) {
+                for (let i = 0; i < this.notes.length; i++) {
+                    if(this.notes[i] != null) {
+                        if (this.notes[i].id === this.id) {
+                            this.notes[i].title = this.title
+                            this.notes[i].note = this.note  
+                        }
+                    }
+                }
             }
-            localStorage.setItem('notes', JSON.stringify(this.notes))
+            axios.put(`http://localhost:3000/notes/${this.id}`, {
+                title: this.title,
+                note: this.note,
+                id: this.id
+            })
             router.push('/')
         },
         deleteNote () {
-            for (let i in this.notes) {
-                if (this.notes[i].id === this.id) {
-                    this.notes.splice(i, 1)
-                }
-            }
-            localStorage.setItem('notes', JSON.stringify(this.notes))
+            axios.delete(`http://localhost:3000/notes/${this.id}`, {
+            })
+        },
+        share () {
+            this.$store.state.note = this.note
+            this.$store.state.title = this.title
+            this.$router.push('/share')
         }
     },
     mounted () {
@@ -79,6 +92,25 @@ export default {
             }
         }
         this.$refs.title.focus();
+    },
+    created () {
+        axios.get(`http://${store.state.localhost}/notes`).then((response) => {
+            this.notes = response.data
+        }),
+        axios.get(`http://${store.state.localhost}/notes/${this.id}`).then((response) => {
+            this.title = response.data.title
+            this.note = response.data.note
+        })
     }
 }
 </script>
+
+<style scoped>
+    .shareButton {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 2rem;
+        background-color: yellowgreen;
+        z-index: -1;
+    }
+</style>

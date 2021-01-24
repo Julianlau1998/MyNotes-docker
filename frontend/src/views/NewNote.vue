@@ -24,6 +24,8 @@
 <script>
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required } from 'vee-validate/dist/rules';
+import axios from 'axios'
+import store from '../store'
 
 extend('required', {
   ...required,
@@ -40,8 +42,8 @@ export default {
             title: '',
             note: '',
             currentObject: {title: '', note: '', id: ""},
-            notesList: JSON.parse(localStorage.getItem('notes')),
-            id: this.$uuidKey()
+            notesList: {},
+            userId: JSON.parse(sessionStorage.getItem('user')).id
         }
     },
     methods: {
@@ -52,9 +54,16 @@ export default {
             this.currentObject.title = this.title
             this.currentObject.note = this.note
             this.currentObject.id = this.id
-            this.notesList.push(this.currentObject)
-            localStorage.setItem('id', this.id)
-            localStorage.setItem('notes',JSON.stringify(this.notesList))
+            // localStorage.setItem('id', this.id)
+            axios.post(`http://${store.state.localhost}/notes`, {
+                title: this.currentObject.title,
+                note: this.currentObject.note,
+                userId: this.userId
+            })
+            .then(response => {response.data})
+            .catch(e => {
+                this.errors.push(e)
+            })
             this.$router.push('/')
         }
     },

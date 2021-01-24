@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@estudioliver/vue-uuid-v4": "^1.0.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
     "vee-validate": "^3.4.5",
     "vue": "^2.6.11",
+    "vue-google-login": "^2.0.5",
     "vue-router": "^3.2.0",
     "vue-uuid": "^2.0.2",
     "vuex": "^3.4.0"

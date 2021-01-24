@@ -10,43 +10,72 @@
             <li v-for="(note, idx) in storedNotes" v-bind:key="idx">
                 <hr id="whiteLine">
                 <button class="noteDiv" @click="openNote(note.id)">
-                    <h5><b>{{note.title}}</b></h5>
+                    <h5><b>{{note.title.substring(0, 13)}}</b></h5>
                 </button>
             </li>
         </ul>
 
         <router-link to="/NewNote"><div class="plusButton">+</div></router-link>
+        <GoogleLogin :params="params" :logoutButton=true id="logOut" :onSuccess="onSuccess" 
+        :onFailure="onFailure">
+            Logout
+        </GoogleLogin>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 import router from '../router'
+import store from '../store'
+import GoogleLogin from 'vue-google-login';
+
 
 export default {
     name: 'Notes',
     data () {
         return {
-            storedNotes: JSON.parse(localStorage.getItem('notes')),
+            params: {
+                client_id: "672669366725-vqgmoki2e0itco3gt51d48b7dpvt5m59.apps.googleusercontent.com"
+            },
+            storedNotes: [],
             titles: [],
-            notes: []
+            notes: [],
+            allNotes: []
         }
+    },
+    components: {
+            GoogleLogin
     },
     methods: {
         openNote (id) {
             this.$store.state.id = id
             router.push(`/Note/${id}`)
+        },
+        onSuccess() {
+            sessionStorage.clear()
+            this.$router.push('/login') 
+        },
+        onFailure () {
+            sessionStorage.clear()
+            this.$router.push('/login') 
         }
     },
-    mounted () {
-        if(this.storedNotes === null) {
-            this.storedNotes = []
+    created () {
+        var user = JSON.parse(sessionStorage.getItem('user'))
+        if (user !== null) {
+            axios.get(`http://${store.state.localhost}/notes`).then((response) => {
+                this.allNotes = response.data
+                for (let i=0; i<this.allNotes.length; i++) {
+                    if (this.allNotes[i] != null) {
+                        if (this.allNotes[i].userId == user.id) {
+                            this.storedNotes.push(this.allNotes[i])
+                        }
+                    }
+                }
+            })
         } else {
-            for (let i=0; i<this.storedNotes.length; i++) {
-            this.titles.push(this.storedNotes[i].title)
-            this.notes.push(this.storedNotes[i].note)
-            console.log(this.titles[i])
-        }
-        }
+            this.$router.push('/login')
+        } 
     }
 }
 </script>
@@ -74,21 +103,16 @@ ul li {
     margin-left: 0rem;
     color: lightgray;
 }
-.header {
-    font-size: 3.5rem;
-    color: lightgray;
-}
-.whiteLine{
-    border-top: 3px solid rgb(134, 134, 134);
-    width: 12.5rem;
-    margin-top: -0.5rem;
-    margin-bottom: 1rem;
-}
 #whiteLine{
     border-top: 3px solid rgb(134, 134, 134);
     margin-top: -0.5rem;
     margin-bottom: 1rem;
     margin-left: -2.5rem;
+}
+#logOut {
+    position: fixed;
+    top: 1rem; 
+    right: 1rem;
 }
 @media (max-width: 390px) { 
     .noteDiv {

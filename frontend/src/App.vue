@@ -88,4 +88,37 @@ body {
     .errorMessage{
       color: red;
     }
+    .header {
+      font-size: 3.5rem;
+      color: lightgray;
+      text-align: center;
+    }
+    .whiteLine{
+        border-top: 3px solid rgb(134, 134, 134);
+        width: 12.5rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+    }
+    .white{
+      color: white;
+    }
+    .centered {
+      display: block;
+      text-align: center;
+    }
+    .homeButton {
+    overflow-wrap: break-word; 
+    width: 8rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: none;
+    box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                1px 1px 5px 2px black;
+    color: lightgray;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 </style>

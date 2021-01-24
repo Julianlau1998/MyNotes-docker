@@ -14,7 +14,7 @@
                     <ul>
                         <li v-for="(item, itemKey) in listElements" :key="itemKey">
                             <input type="text" id="listElement" @focus="newElement">
-                            <button style="display: inline;">Del</button>
+                            <button id="deleteButton"><img src="../assets/trash.png" alt="Delete Button" id="deleteImage"></button>
                         </li>
                     </ul>
                 </div>        
@@ -64,12 +64,13 @@ export default {
 <style scoped>
   ul li {
       list-style-type: none;
-      margin-left: -2rem;
+      margin-left: -4rem;
       margin-bottom: 0.8rem;
   }
 
   input {
-      margin-right: 10rem;
+      margin-right: 0.5rem;
+      margin-left: 1rem;
       color: lightgray;
       border: none;
       box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
@@ -81,7 +82,8 @@ export default {
   }
   #listElement {
       background: none;
-      width: 75vw;
+      width: 77vw;
+      margin-left: 6vw;
       margin-bottom: 0.5rem;
       background-color:  rgb(54, 61, 68);
   }
@@ -92,4 +94,15 @@ export default {
   #trashcan {
       width: 2rem;
   }
+  #title {
+      width: 90vw;
+  }  
+  #deleteButton {
+      display: inline;
+      background: transparent;
+      border: none;
+  }
+  #deleteImage {
+      width: 2.5rem;
+  } 
 </style>

@@ -5,6 +5,9 @@ import NewNote from '../views/NewNote.vue'
 import Note from '../views/Note.vue'
 import Lists from '../views/Lists.vue'
 import NewList from '../views/NewList.vue'
+import Login from '../views/login.vue'
+import Register from '../views/register.vue'
+import Share from '../views/Share.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +36,21 @@ const routes = [
     path: '/Lists',
     name: 'List',
     component: Lists
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
+  },
+  {
+    path: '/share',
+    name: 'share',
+    component: Share
   }
 ]
 
