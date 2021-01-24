@@ -67,7 +67,7 @@ export default {
                     }
                 }
             }
-            axios.put(`http://localhost:3000/notes/${this.id}`, {
+            axios.put(`http://${this.$store.state.localhost}/notes/${this.id}`, {
                 title: this.title,
                 note: this.note,
                 id: this.id
@@ -75,7 +75,7 @@ export default {
             router.push('/')
         },
         deleteNote () {
-            axios.delete(`http://localhost:3000/notes/${this.id}`, {
+            axios.delete(`http://${this.$store.state.localhost}/notes/${this.id}`, {
             })
         },
         share () {

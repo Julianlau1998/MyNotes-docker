@@ -32,7 +32,7 @@
         </ValidationObserver>
         <GoogleLogin id="login" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><img id="googleImage" src="../assets/google.png" alt=""></GoogleLogin>
 
-        <router-link to="/register" id="register">Log In instead</router-link>
+        <router-link to="/logIn" id="register">Log In<br>instead</router-link>
         
 
     </div>
@@ -121,19 +121,6 @@ export default {
 </script>
 
 <style scoped>
-    #login {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 3rem;
-        width: 15vw;
-        height: 5vw;
-        position: absolute;
-        left: 42.5vw
-    } 
-    #googleImage {
-        width: 35vw;
-    }
     .invisible {
         opacity: 0;
     }
@@ -142,13 +129,6 @@ export default {
         text-align: center;
     }
     #register {
-        width: 10vw;
-        height: 6.5vw;
-        position: absolute;
-        left: 45vw;
-        top: 40rem;
-        background-color: white;
-        text-align: center;
-        color: black;
+        width: 6rem;
     }
 </style>

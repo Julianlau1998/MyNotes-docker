@@ -94,32 +94,25 @@ export default {
     #login {
         display: flex;
         justify-content: center;
+        margin: 0 auto;
         align-items: center;
         margin-top: 3rem;
-        width: 15vw;
-        height: 5vw;
-        position: absolute;
-        left: 42.5vw
+        width: 12rem;
+        height: 2.6rem;
+        border: none;
     } 
     #googleImage {
-        width: 35vw;
+        width: 12.3rem;
     }
     .invisible {
         opacity: 0;
+        height: 2rem;
     }
     .form {
         display: block;
         text-align: center;
 
     }
-    #register {
-        width: 10vw;
-        height: 3.5vw;
-        position: absolute;
-        left: 45vw;
-        top: 30rem;
-        background-color: white;
-        text-align: center;
-        color: black;
+    @media (min-width: 1000px) { 
     }
 </style>

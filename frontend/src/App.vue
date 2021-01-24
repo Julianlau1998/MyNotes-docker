@@ -126,18 +126,41 @@ body {
       text-align: center;
     }
     .homeButton {
-    overflow-wrap: break-word; 
-    width: 8rem;
-    height: 4rem;
-    border-radius: 1rem;
-    background-color: transparent;
-    border: none;
-    box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
-                1px 1px 5px 2px black;
-    color: lightgray;
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+      overflow-wrap: break-word; 
+      width: 8rem;
+      height: 4rem;
+      border-radius: 1rem;
+      background-color: transparent;
+      border: none;
+      box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                  1px 1px 5px 2px black;
+      color: lightgray;
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #login {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        align-items: center;
+        margin-top: 3rem;
+        width: 12rem;
+        height: 2.6rem;
+        border: none;
+    } 
+    #googleImage {
+        width: 12.3rem;
+    }
+    #register {
+        width: 10rem;
+        height: 3.2rem;
+        margin: 6rem auto;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        text-align: center;
+        color: black;
+    }
 </style>

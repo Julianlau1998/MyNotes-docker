@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  mynotes_frontend:
+    image: mynotes_frontend
+    ports:
+      - 8080:80
+    working_dir: /app
+  
+  mynotes_backend:
+    image: mynotes_backend
+    ports:
+      - 3000:3000
+    working_dir: /usr/src/app
