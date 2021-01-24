@@ -92,17 +92,25 @@ body {
         border: none;
     }
     .saveButton {
-        background-color: rgb(4, 82, 17);
         width: 10rem;
         height: 3rem;
-        color: white;
         font-weight: bolder;
         font-size: 1.2rem;
         position: absolute;
-        bottom: 1rem;
+        bottom: 1.5rem;
         left: 50%;
         transform: translateX(-50%);
         z-index: -1;
+
+        border-radius: 0.7rem;
+        background-color: transparent;
+        border: none;
+        box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                    1px 1px 5px 2px black;
+        color: lightgray;
+        font-weight: 900;
+        font-size: larger;
+        margin-top: 5rem;
     }
     .errorMessage{
       color: red;
@@ -139,6 +147,9 @@ body {
       bottom: 1rem;
       left: 50%;
       transform: translate(-50%, -50%);
+      color: lightgray;
+        font-weight: 600;
+        font-size: larger;
     }
     #login {
         display: flex;
@@ -154,13 +165,21 @@ body {
         width: 12.3rem;
     }
     #register {
-        width: 10rem;
-        height: 3.2rem;
         margin: 6rem auto;
         display: flex;
         justify-content: center;
-        background-color: white;
         text-align: center;
-        color: black;
-    }
+        
+        width: 11rem;
+        height: 4rem;
+        padding: 0.3rem;
+        border-radius: 1rem;
+        background-color: transparent;
+        border: none;
+        box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                    1px 1px 5px 2px black;
+        color: lightgray;
+        font-weight: 400;
+        font-size: larger;
+    } 
 </style>

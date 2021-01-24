@@ -1,25 +1,22 @@
 <template>
     <div id="app">
-        <h1 class="header">MyNotes</h1>
+        <img src="../../public/img/settings.png" alt="settings" v-on:click="settings" id=settingsImage>
+        <h1 class="header">My<span style="color:rgb(215, 0, 0);">N</span>otes</h1>
         <hr class="whiteLine">
-        <h2><span style="color: green">Notes</span>
-        <router-link to="/Lists" style="color: white; margin-left: 0.6rem;">Lists</router-link></h2>
+        <!--<h2><span style="color: green">Notes</span>
+        <router-link to="/Lists" style="color: white; margin-left: 0.6rem;">Lists</router-link></h2>-->
         <br>
         <!--<hr class="line">-->
         <ul id="listParent">
             <li v-for="(note, idx) in storedNotes" v-bind:key="idx">
-                <hr id="whiteLine">
                 <button class="noteDiv" @click="openNote(note.id)">
                     <h5><b>{{note.title.substring(0, 12)}}</b></h5>
                 </button>
+                <hr id="whiteLine">
             </li>
         </ul>
 
         <router-link to="/NewNote"><div class="plusButton">+</div></router-link>
-        <GoogleLogin :params="params" :logoutButton=true id="logOut" :onSuccess="onSuccess" 
-        :onFailure="onFailure">
-            Logout
-        </GoogleLogin>
     </div>
 </template>
 
@@ -27,37 +24,25 @@
 import axios from 'axios'
 import router from '../router'
 import store from '../store'
-import GoogleLogin from 'vue-google-login';
 
 
 export default {
     name: 'Notes',
     data () {
         return {
-            params: {
-                client_id: "672669366725-vqgmoki2e0itco3gt51d48b7dpvt5m59.apps.googleusercontent.com"
-            },
             storedNotes: [],
             titles: [],
             notes: [],
             allNotes: []
         }
     },
-    components: {
-            GoogleLogin
-    },
     methods: {
         openNote (id) {
             this.$store.state.id = id
             router.push(`/Note/${id}`)
         },
-        onSuccess() {
-            sessionStorage.clear()
-            this.$router.push('/login') 
-        },
-        onFailure () {
-            sessionStorage.clear()
-            this.$router.push('/login') 
+        settings () {
+            this.$router.push('/settings')
         }
     },
     created () {
@@ -104,7 +89,7 @@ ul li {
     color: lightgray;
 }
 #whiteLine{
-    border-top: 3px solid rgb(134, 134, 134);
+    border-top: 3px solid rgb(215, 0, 0);
     margin-top: -0.5rem;
     margin-bottom: 1rem;
     margin-left: -2.5rem;
@@ -113,6 +98,13 @@ ul li {
     position: fixed;
     top: 1rem; 
     right: 1rem;
+}
+#settingsImage {
+    width: 2.2rem;
+    position: absolute;
+    right: 0.7rem;
+    top: 0.7rem;
+    cursor: pointer;
 }
 @media (max-width: 390px) { 
     .noteDiv {

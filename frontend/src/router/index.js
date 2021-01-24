@@ -8,6 +8,7 @@ import NewList from '../views/NewList.vue'
 import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 import Share from '../views/Share.vue'
+import Settings from '../views/Settings.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/share',
     name: 'share',
     component: Share
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: Settings
   }
 ]
 

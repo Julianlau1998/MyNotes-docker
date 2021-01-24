@@ -1,17 +1,17 @@
 <template>
     <div>
-        <h1 class="header">MyNotes</h1>
+         <h1 class="header">My<span style="color:rgb(215, 0, 0);">N</span>otes</h1>
         <hr class="whiteLine">
          <ValidationObserver v-slot="{ invalid }">
-            <form class="form" @submit.prevent="onSubmit"><br><br>
+            <form class="form" @submit.prevent="onSubmit"><br>
 
-                <ValidationProvider name="E-mail" rules="required" v-slot="{ errors }">
-                    <input v-model="email" type="email" placeholder="email"><br>
+                <ValidationProvider name="E-mail" rules="required|email" v-slot="{ errors }">
+                    <input v-model="email" type="email" placeholder="Email"><br>
                     <span class="errorMessage">{{ errors[0] }}</span>
                 </ValidationProvider><br>
 
-                <ValidationProvider name="Password" rules="required" v-slot="{ errors }">
-                    <input v-model="password" type="password" placeholder="password"><br>
+                <ValidationProvider name="Password" rules="required|min:10" v-slot="{ errors }">
+                    <input v-model="password" type="password" placeholder="Password"><br>
                     <span class="errorMessage">{{ errors[0] }}</span>
                 </ValidationProvider><br>
 
@@ -27,7 +27,7 @@
 
                 
 
-                <button type="submit" :disabled="invalid">Register</button>
+                <button type="submit" :disabled="invalid" class="registerSmall">Register</button>
             </form>
         </ValidationObserver>
         <GoogleLogin id="login" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><img id="googleImage" src="../assets/google.png" alt=""></GoogleLogin>
@@ -43,11 +43,20 @@ import GoogleLogin from 'vue-google-login';
 import axios from 'axios'
 import {uuid} from "vue-uuid";
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
-import { required } from 'vee-validate/dist/rules';
+import { required, email, min } from 'vee-validate/dist/rules';
 
 extend('required', {
   ...required,
   message: 'This field is required'
+});
+
+extend('email', {
+  ...email,
+  message: 'This is not a valid Email address'
+});
+extend('min', {
+  ...min,
+  message: 'Password must be at least 10 characters long'
 });
 
 
@@ -130,5 +139,19 @@ export default {
     }
     #register {
         width: 6rem;
+        margin-top: 2.5rem;
+    }
+    input {
+        border-radius: 5px;
+        height: 2.5rem;
+         background-color: transparent;
+        border: none;
+        box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                    1px 1px 20px 2px rgb(0, 0, 0);
+        color: lightgray;
+        font-weight: 400;
+        font-size: larger;
+        padding-left: 1rem;
+        padding-right: -1rem;
     }
 </style>

@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h1 class="header">MyNotes</h1>
+        <h1 class="header">My<span style="color:rgb(215, 0, 0);">N</span>otes</h1>
         <hr class="whiteLine">
         <div class="form"> <br><br>
-            <input type="email" placeholder="Email" v-model="email"> <br>
+            <input type="email" placeholder="Email" v-model="email"> <br><br>
             <input type="password" placeholder="Password" v-model="password"><br><br>
-            <button type="button" v-on:click="logIn">Log In</button>
+            <button type="button" v-on:click="logIn" id="login">Log In</button>
         </div>
-        <GoogleLogin id="login" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><img id="googleImage" src="../assets/google.png" alt=""></GoogleLogin>
+        <GoogleLogin id="googleLogin" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><img id="googleImage" src="../assets/google.png" alt=""></GoogleLogin>
         <!--<GoogleLogin :params="params" :logoutButton=true>Logout</GoogleLogin>-->
 
         <router-link to="/register" id="register">Or Register new Account</router-link>
@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style scoped>
-    #login {
+    #googleLogin {
         display: flex;
         justify-content: center;
         margin: 0 auto;
@@ -101,6 +101,19 @@ export default {
         height: 2.6rem;
         border: none;
     } 
+    #login {
+        width: 6rem;
+        height: 3rem;
+        border-radius: 1rem;
+        background-color: transparent;
+        border: none;
+        box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                    1px 1px 5px 2px black;
+        color: lightgray;
+        font-weight: 960;
+        font-size: larger;
+        margin-top: 1rem;
+    }
     #googleImage {
         width: 12.3rem;
     }
@@ -112,6 +125,19 @@ export default {
         display: block;
         text-align: center;
 
+    }
+    input {
+        border-radius: 5px;
+        height: 2.5rem;
+         background-color: transparent;
+        border: none;
+        box-shadow: -1px -1px 4px 0px rgb(133, 133, 133),
+                    1px 1px 20px 2px rgb(0, 0, 0);
+        color: lightgray;
+        font-weight: 400;
+        font-size: larger;
+        padding-left: 1rem;
+        padding-right: -1rem;
     }
     @media (min-width: 1000px) { 
     }

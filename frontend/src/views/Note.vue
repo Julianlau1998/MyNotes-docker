@@ -25,7 +25,7 @@
             <button class="saveButton" type="submit">Save</button>
         </form>
         </ValidationObserver>
-        <button class="shareButton" v-on:click="share">Share</button>
+        <img src="../../public/img/share.png" alt="share" v-on:click="share" id="share">
     </div>
 </template>
 
@@ -112,5 +112,12 @@ export default {
         right: 2rem;
         background-color: yellowgreen;
         z-index: -1;
+    }
+    #share {
+        width: 7rem;
+        position: absolute;
+        bottom: -0.5rem;
+        right: -0.7rem;
+        cursor: pointer;
     }
 </style>
