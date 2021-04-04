@@ -67,7 +67,7 @@ export default {
                     }
                 }
             }
-            axios.put(`http://${this.$store.state.localhost}/notes/${this.id}`, {
+            axios.put(`${this.$store.state.localhost}/notes/${this.id}`, {
                 title: this.title,
                 note: this.note,
                 id: this.id
@@ -75,7 +75,7 @@ export default {
             router.push('/')
         },
         deleteNote () {
-            axios.delete(`http://${this.$store.state.localhost}/notes/${this.id}`, {
+            axios.delete(`${this.$store.state.localhost}/notes/${this.id}`, {
             })
         },
         share () {
@@ -94,10 +94,10 @@ export default {
         this.$refs.title.focus();
     },
     created () {
-        axios.get(`http://${store.state.localhost}/notes`).then((response) => {
+        axios.get(`${store.state.localhost}/notes`).then((response) => {
             this.notes = response.data
         }),
-        axios.get(`http://${store.state.localhost}/notes/${this.id}`).then((response) => {
+        axios.get(`${store.state.localhost}/notes/${this.id}`).then((response) => {
             this.title = response.data.title
             this.note = response.data.note
         })

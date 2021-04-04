@@ -27,7 +27,7 @@ export default {
         if (this.$store.state.title === '') {
             this.$router.push('/')
         }
-        axios.get(`http://${this.$store.state.localhost}/users`).then((response) => {
+        axios.get(`${this.$store.state.localhost}/users`).then((response) => {
             for (let i=0; i<response.data.length; i++) {
                 this.users.push(response.data[i])
             } 
@@ -37,7 +37,7 @@ export default {
         send () {
            for (let i=0; i<this.users.length; i++) {
                 if (this.users[i].email == this.email) {
-                    axios.post(`http://${this.$store.state.localhost}/notes`, {
+                    axios.post(`${this.$store.state.localhost}/notes`, {
                         title: '(Shared)' + this.$store.state.title,
                         note: this.$store.state.note,
                         userId: this.users[i].id

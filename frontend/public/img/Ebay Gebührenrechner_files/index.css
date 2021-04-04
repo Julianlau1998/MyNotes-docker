@@ -1,0 +1,123 @@
+body{
+    margin: 0 2%;
+    text-align: center;
+    background-color: rgb(0, 19, 22);
+    font-family: "Avenir", cursive, sans-serif;
+    color: rgb(199, 199, 199);
+}
+
+.header {
+    margin: 2rem;
+}
+
+.field {
+    width: 18rem;
+    margin-left: 7%;
+    margin: 0;
+    position: absolute; 
+    left:50%;
+    transform:translateX(-50%);
+    margin-top: 5rem;
+    background-color: rgb(0, 23, 26);
+    box-shadow: -2px -2px 5px white,
+                4px 4px 5px rgb(28, 28, 28);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1;
+}
+
+#fieldTwo {
+    z-index: 0;
+    opacity: 0;
+}
+
+input{
+    width: 5rem;
+    height: 1.7rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+    border-radius: 3px;
+    border: none;
+    margin-left: 2rem;
+}
+
+button{
+    background-color: #72a7cf;
+	border-radius: 10px;
+	outline: none;
+	color: black;
+    font-weight: bold;
+    top: 1.3rem;
+    font-weight: 600;
+    padding: 0.4rem;
+    margin-top: 1rem;
+    font-size: large;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#checkbox {
+    margin-top: -0.5rem;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+#paypalLabel {
+    float: left;
+    margin-left: 1.5rem;
+}
+#shippingLabel {
+    float: left;
+    margin-left: 0.5rem;
+}
+
+#shipping {
+    margin-left: 1.2rem;
+}
+.settingsImage {
+    width: 3rem;
+    margin-top: -1.5rem;
+    cursor: pointer;
+}
+
+@media (min-width: 500px) {
+    .settingsImage {
+        margin-top: 0rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .settingsImage {
+        margin-top: -0.5rem;
+    }
+    .field {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 345px) {
+    .field {
+        width: 14rem;
+        font-size: small;
+    }
+    #paypalLabel{
+        margin-left: 0.3rem;
+    }
+    #shippingLabel{
+        margin-left: 0.3rem;
+    }
+    #checkbox {
+        margin-left: 4.5rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .field {
+        margin-top: 1.5rem;
+    }
+    .settingsImage {
+        margin-top: -1rem;
+    }
+}

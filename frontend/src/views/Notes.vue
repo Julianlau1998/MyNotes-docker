@@ -48,7 +48,7 @@ export default {
     created () {
         var user = JSON.parse(sessionStorage.getItem('user'))
         if (user !== null) {
-            axios.get(`http://${store.state.localhost}/notes`).then((response) => {
+            axios.get(`${store.state.localhost}/notes`).then((response) => {
                 this.allNotes = response.data
                 for (let i=0; i<this.allNotes.length; i++) {
                     if (this.allNotes[i] != null) {

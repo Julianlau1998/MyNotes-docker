@@ -89,7 +89,7 @@ export default {
             }
             sessionStorage.setItem('user',JSON.stringify(user)); 
             
-            axios.post(`http://${this.$store.state.localhost}/users`, {
+            axios.post(`${this.$store.state.localhost}/users`, {
                 id: googleUser.getBasicProfile().JR,
                 email: googleUser.getBasicProfile().jt,
                 firstName: googleUser.getBasicProfile().nT,
@@ -112,7 +112,7 @@ export default {
             }
             sessionStorage.setItem('user',JSON.stringify(user)); 
 
-             axios.post(`http://${this.$store.state.localhost}/users`, {
+             axios.post(`${this.$store.state.localhost}/users`, {
                 id: this.id,
                 email: this.email,
                 password: this.password,

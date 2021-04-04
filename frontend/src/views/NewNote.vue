@@ -55,7 +55,7 @@ export default {
             this.currentObject.note = this.note
             this.currentObject.id = this.id
             // localStorage.setItem('id', this.id)
-            axios.post(`http://${store.state.localhost}/notes`, {
+            axios.post(`${store.state.localhost}/notes`, {
                 title: this.currentObject.title,
                 note: this.currentObject.note,
                 userId: this.userId

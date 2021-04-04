@@ -53,7 +53,7 @@ export default {
             }
             sessionStorage.setItem('user',JSON.stringify(user)); 
             
-            axios.post(`http://${this.$store.state.localhost}/users`, {
+            axios.post(`${this.$store.state.localhost}/users`, {
                 id: googleUser.getBasicProfile().JR,
                 email: googleUser.getBasicProfile().jt,
                 firstName: googleUser.getBasicProfile().nT,
@@ -69,7 +69,7 @@ export default {
             alert("failure")
         },
         logIn () {
-            axios.get(`http://${this.$store.state.localhost}/users`)
+            axios.get(`${this.$store.state.localhost}/users`)
             .then((response) => {
                 this.users = response.data
                 for (let i=0; i<this.users.length; i++) {
